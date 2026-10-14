@@ -1,6 +1,6 @@
 # Python for AI
 
-**Student:** Atika Shafiq
+**Student:** Ayesha Nasir
 
 **Course:** Python for AI
 
