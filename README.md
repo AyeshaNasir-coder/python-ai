@@ -28,6 +28,11 @@ uv run code/lesson_01_intro.py
 - Lesson 1.2: Toolkit Proof
 - Lesson 1.3: Client-Ready Repo
 - Lesson 1.4: Business Prompt Builder 
+- Lesson 1.5: AI Model Profile Card
+- Lesson 1.6: Prompt Cleaner
+- Lesson 1.7: Smart Model Router
+- Lesson 1.8: Clinic Helper Bot
+
 
 ## Module 1 Project: AI Prompt Kit
 
