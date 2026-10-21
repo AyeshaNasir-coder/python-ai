@@ -1,39 +1,31 @@
+"""Lesson 1.5: AI Model Profile Card.
 
+Display model settings and estimate token costs.
 """
-Lesson 1.5: AI Model Profile Card
-Store model settings and estimate chat cost.
-"""
 
-# 1. Store the AI model profile
+model_name: str = "gemma3:1b"
+context_window: int = 32768
+price_per_1k_tokens: float = 0.5  # Practice price in PKR, not a real fee
+runs_locally: bool = True
 
-MODEL = "gemini-4-argon"                 # str: text
-max_tokens = 300                         # int: whole number
-temperature = 0.7                        # float: decimal
-stream = False                           # bool: True or False
-api_key = None                           # None: no value yet
+# Why: Clear variable names make model settings easy to understand.
+# Why: Correct data types help prevent errors in AI applications.
 
-system_prompt = "You are a helpful Python tutor."
+print("--- AI Model Profile Card ---")
+print(f"Model name: {model_name} ({type(model_name)})")
+print(f"Context window: {context_window} ({type(context_window)})")
+print(f"Price per 1K tokens: {price_per_1k_tokens} PKR ({type(price_per_1k_tokens)})")
+print(f"Runs locally: {runs_locally} ({type(runs_locally)})")
 
-# 2. Example price for practice, not a real API price
-price_per_1k_tokens = 0.5                # PKR
+tokens_used = int(input("\nHow many tokens does one chat use? "))
 
-# 3. Get token count from the user
-tokens_used = int(input("Tokens used: "))
+cost = tokens_used / 1000 * price_per_1k_tokens
 
-# 4. Calculate estimated cost
-cost = (tokens_used / 1000) * price_per_1k_tokens
+print(f"Estimated cost per chat: {round(cost, 2)} PKR")
 
-# 5. Display the model profile
-print("\n--- AI Model Profile Card ---")
+# Stretch task: calculate the estimated monthly cost.
+chats_per_day = int(input("How many chats per day? "))
 
-print(f"Model: {MODEL} | Type: {type(MODEL)}")
-print(f"Max tokens: {max_tokens} | Type: {type(max_tokens)}")
-print(f"Temperature: {temperature} | Type: {type(temperature)}")
-print(f"Streaming: {stream} | Type: {type(stream)}")
-print(f"API key: {api_key} | Type: {type(api_key)}")
-print(f"System prompt: {system_prompt} | Type: {type(system_prompt)}")
+monthly_cost = cost * chats_per_day * 30
 
-# 6. Display the cost estimate
-print("\n--- Cost Estimate ---")
-print(f"Tokens used: {tokens_used}")
-print(f"Estimated cost: {round(cost, 2)} PKR")
+print(f"Estimated monthly cost: {round(monthly_cost, 2)} PKR")
