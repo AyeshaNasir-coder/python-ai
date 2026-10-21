@@ -1,51 +1,49 @@
 
-"""
-Lesson 1.7: Smart Model Router
-Choose an AI model based on the task and estimate its cost.
+
+"""Lesson 1.7: Smart Model Router.
+Choose a model based on task type and estimate its cost.
 """
 
-# 1. Get task and token count from the user
 task = input("Task (code / private / chat): ").strip().lower()
 tokens = int(input("Estimated tokens: "))
 
-# 2. Set example prices per 1,000 tokens (PKR)
-cloud_price_per_1k = 0.5
+# Example price for practice, not a real model price.
+cloud_price_per_1k = 0.8
 
-# 3. Choose a model based on the task
-# Private tasks must use the local model
+# Why: Private tasks should use a local model to avoid sending
+# sensitive information to a cloud model.
 if task == "private":
     model = "llama3.2 (local, Ollama)"
-    cost = 0.0
+    price = 0
 
 elif task == "code":
     model = "claude (cloud, strong at code)"
-    cost = (tokens / 1000) * cloud_price_per_1k
+    price = cloud_price_per_1k
 
 elif task == "chat":
     model = "small cloud model (cheap for chat)"
-    cost = (tokens / 1000) * cloud_price_per_1k
+    price = 0.2
 
 else:
     model = "No model selected"
-    cost = 0.0
+    price = 0
 
-# 4. Check the request length
+# Why: Negative token counts are invalid, and long requests
+# may need shortening to reduce cost.
 if tokens < 0:
-    warning = "Invalid token count."
+    print("Invalid token count.")
 elif tokens > 4000:
-    warning = "Long request: consider shortening it."
+    print("Warning: long request, consider shortening it.")
 else:
-    warning = "Length is fine."
+    print("Length is fine.")
 
-# 5. Display the result
-print("\n" + "=" * 40)
-print("SMART MODEL ROUTER")
-print("=" * 40)
+# Stretch: Ask whether the user has a paid account.
+paid_answer = input("Is this a paid user? (yes/no): ").strip().lower()
 
-print(f"Task: {task}")
-print(f"Estimated tokens: {tokens}")
-print(f"Chosen model: {model}")
-print(warning)
-print(f"Estimated cost: {round(cost, 2)} PKR")
+if paid_answer == "no" and tokens > 2000:
+    print("Upgrade to send long requests.")
 
-print("=" * 40)
+if tokens >= 0:
+    cost = (tokens / 1000) * price
+    print(f"Chosen model: {model}")
+    print(f"Estimated cost: {cost:.2f} PKR")

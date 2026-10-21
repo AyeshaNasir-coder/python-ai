@@ -43,3 +43,19 @@ A Python tool that turns a local business's details into 3 ready-to-use AI promp
 ![Prompt Kit running](docs/project-m1-run.png)
 
 **Who would pay for this:** Small business owners, such as bakery, salon, and shop owners, who want AI help with marketing, customer service, and business growth but don't know what to type.
+
+
+
+## Task 1.8: Business Helper Bot Design
+
+Business: Care Plus Clinic
+
+| Intent | Keywords | Reply |
+|---|---|---|
+| Greeting | hi, hello, salam | Welcome and ask how to help |
+| Timings | timing, hour, open | Opening hours |
+| Fees | fee, price, cost | Consultation fee |
+| Location | location, address, where | Clinic address |
+| Appointment | appointment, book, visit | Contact reception |
+| Complaint | complaint, problem, bad service | Apology and reception help |
+| Unknown question | No matching keyword | Count question and prepare AI prompt |

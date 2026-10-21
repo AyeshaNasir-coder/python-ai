@@ -1,79 +1,77 @@
 
-"""
-Lesson 1.8: Business Helper Bot
-Business: Care Plus Clinic
-A rule-based chatbot for common clinic questions.
+"""Lesson 1.8: Business Helper Bot.
+Answer common questions for Care Plus Clinic.
 """
 
 BOT = "Care Plus Clinic Bot"
 
-# Welcome message
-print(f"{BOT}: Welcome! I can help with timings, fees, location and appointments.")
-print(f"{BOT}: Type 'bye' to end the chat.")
+print(f"{BOT}: Hi! Ask about timings, fees, location or appointments.")
+print(f"{BOT}: Type 'bye' to exit.")
 
-# Memory: remember the visitor's name
+# Why: Asking the name once makes later replies more personal.
 name = input(f"{BOT}: What is your name? ").strip().title()
 
-if name == "":
-    name = "friend"
+if not name:
+    name = "Friend"
 
-print(f"{BOT}: Nice to meet you, {name}!")
+message_count = 0
+unanswered_count = 0
+complaint_count = 0
 
-# Count messages and unanswered questions
-count = 0
-unanswered = 0
-
-# Main chatbot loop
 while True:
     message = input(f"{name}: ").strip().lower()
-    count += 1
+    message_count += 1
 
-    # Exit rule
     if message == "bye" or message == "exit":
-        print(f"{BOT}: Goodbye, {name}! Thank you for contacting us.")
+        print(f"{BOT}: Take care, {name}!")
         break
 
-    # Empty input rule
     elif message == "":
-        print(f"{BOT}: Please type a question.")
+        print(f"{BOT}: Please enter a question.")
 
-    # Complaint rule comes first
-    elif "complaint" in message or "problem" in message or "bad service" in message:
-        print(f"{BOT}: We are sorry to hear that. Please contact our clinic reception.")
+    # Why: Complaints should be handled before ordinary questions.
+    elif ("complaint" in message or "problem" in message
+          or "bad service" in message):
+        complaint_count += 1
+        print(
+            f"{BOT}: Sorry to hear that. "
+            "Please contact our clinic reception for help."
+        )
 
-    # Opening hours
-    elif "hour" in message or "open" in message or "timing" in message:
-        print(f"{BOT}: Our clinic is open from 9 am to 8 pm, Monday to Saturday.")
-
-    # Consultation fees
-    elif "fee" in message or "price" in message or "cost" in message:
-        print(f"{BOT}: Our example consultation fee is 1,000 PKR.")
-
-    # Location
-    elif "where" in message or "location" in message or "address" in message:
-        print(f"{BOT}: Our example clinic address is Main Boulevard, Lahore.")
-
-    # Appointments
-    elif "appointment" in message or "book" in message or "visit" in message:
-        print(f"{BOT}: Please contact our clinic reception to arrange an appointment.")
-
-    # Greeting
     elif message == "hi" or message == "hello" or message.startswith("salam"):
-        print(f"{BOT}: Hello, {name}! How can we help you today?")
+        print(f"{BOT}: Hello, {name}! How can we help you?")
 
-    # Fallback rule
+    elif "timing" in message or "hour" in message or "open" in message:
+        print(f"{BOT}: We are open 9 am to 8 pm, Monday to Saturday.")
+
+    elif "fee" in message or "price" in message or "cost" in message:
+        print(f"{BOT}: Example consultation fee is 1,000 PKR.")
+
+    elif "location" in message or "address" in message or "where" in message:
+        print(f"{BOT}: Our example address is Main Boulevard, Lahore.")
+
+    elif "appointment" in message or "book" in message or "visit" in message:
+        print(f"{BOT}: Please contact reception to arrange an appointment.")
+
     else:
-        unanswered += 1
+        unanswered_count += 1
+
+        # Why: Unknown questions are counted so the business can
+        # identify where its chatbot needs improvement.
         prompt = (
             "You are a friendly assistant for Care Plus Clinic. "
-            "Do not diagnose medical conditions. "
-            f"Answer this general question in 2 lines: {message}"
+            "Answer in 2 short lines. Do not diagnose medical conditions. "
+            f"Customer question: {message}"
         )
-        print(f"{BOT}: I do not have an answer for that question yet.")
-        print(f"{BOT}: In Module 2, AI could use this prompt:")
-        print(f"  {prompt}")
 
-# Chat summary
+        print(f"{BOT}: I do not know the answer to that yet.")
+        print(f"{BOT}: AI prompt for Module 2: {prompt}")
+
 print("=" * 40)
-print(f"Chat summary: {count} messages, {unanswered} unanswered.")
+print(
+    f"Chat summary: {message_count} messages, "
+    f"{unanswered_count} unanswered."
+)
+print(f"Complaints received: {complaint_count}")
+
 
