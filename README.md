@@ -59,3 +59,41 @@ Business: Care Plus Clinic
 | Appointment | appointment, book, visit | Contact reception |
 | Complaint | complaint, problem, bad service | Apology and reception help |
 | Unknown question | No matching keyword | Count question and prepare AI prompt |
+
+
+## Module 1 Checkpoint 2: AI Front Desk
+
+**Project:** Sweet Crumbs Bakery AI Front Desk
+
+A Python-based front desk assistant that answers common customer questions, calculates order quotes with bulk discounts and delivery fees, prepares AI prompts for unknown questions, and estimates AI costs.
+
+### Features
+- Rule-based FAQ responses
+- Complaint handling
+- Order quotes for cupcakes, brownies, and chocolate cakes
+- 10% bulk discount for orders of 10 or more items
+- Free delivery for qualifying discounted subtotals
+- Local and cloud AI prompt routing
+- Session summary with quote totals and estimated AI costs
+
+### How to Run
+
+```bash
+uv run code/project_m1_front_desk.py
+```
+
+### Project Files
+- `code/project_m1_front_desk.py` — main program
+- `docs/project-m1-part2-design.md` — design and rule tests
+- `docs/project-m1-part2-results.md` — AI prompt testing and evaluation
+
+### Example Result
+
+A quote for 12 cupcakes has a subtotal of 3,000 PKR, a 300 PKR discount, a 200 PKR delivery fee, and a final total of **2,900 PKR**.
+
+**Value:** The assistant gives consistent quotes and estimates AI costs before using an AI service.
+
+**Note:** AI prompts and cost estimates are implemented; automatic model calls are not yet integrated.
+
+- `docs/project-m1-part2-run-1.png` — terminal screenshot 1
+- `docs/project-m1-part2-run-2.png` — terminal screenshot 2
