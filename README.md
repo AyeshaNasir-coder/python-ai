@@ -95,5 +95,5 @@ A quote for 12 cupcakes has a subtotal of 3,000 PKR, a 300 PKR discount, a 200 P
 
 **Note:** AI prompts and cost estimates are implemented; automatic model calls are not yet integrated.
 
-- `docs/project-m1-part2-run-1.png` — terminal screenshot 1
-- `docs/project-m1-part2-run-2.png` — terminal screenshot 2
+- `docs/project-m1-part2-run.png` — terminal screenshot 
+
